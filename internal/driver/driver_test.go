@@ -171,10 +171,10 @@ func TestHandleWrite(t *testing.T) {
 	readerConfigCmdValue, err := dsModels.NewCommandValueWithOrigin(ResourceReaderConfig,common.ValueTypeString,"{}",0)
 	require.NoError(t,err)
 
-	roSpecCmdValue, err := dsModels.NewCommandValueWithOrigin(ResourceReaderConfig,common.ValueTypeString, ActionStart, 0)
+	roSpecCmdValue, err := dsModels.NewCommandValueWithOrigin(ResourceAction,common.ValueTypeString, ActionStart, 0)
 	require.NoError(t,err)
 
-	accessSpecCmdValue, err := dsModels.NewCommandValueWithOrigin(ResourceReaderConfig,common.ValueTypeString, ActionEnable, 0)
+	accessSpecCmdValue, err := dsModels.NewCommandValueWithOrigin(ResourceAction,common.ValueTypeString, ActionEnable, 0)
 	require.NoError(t,err)
 
 	customMessageCmdValue, err := dsModels.NewCommandValueWithOrigin("MyCustomMessage",common.ValueTypeString, customData, 0)
@@ -229,8 +229,8 @@ func TestHandleWrite(t *testing.T) {
 				DeviceResourceName: "MyCustomMessage",
 				Type:               common.ValueTypeString,
 				Attributes: map[string]interface{}{
-					"vendor":  25882,
-					"subtype": 21,
+					"vendor":  uint64(25882),
+					"subtype": uint64(21),
 				}},
 			},
 			param: []*dsModels.CommandValue{

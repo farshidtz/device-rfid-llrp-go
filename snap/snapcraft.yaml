@@ -1,4 +1,4 @@
-name:  edgex-device-rfid-llrp
+name:  edgex-device-rfid-llrp-go
 base: core18
 adopt-info: version
 license: Apache-2.0
@@ -7,8 +7,8 @@ title: EdgeX Device LLRP Micro Service
 description: |
   The EdgeX Device LLRP service for connecting LLRP based RFID devices to EdgeX.
   Initially the daemon in the snap is disabled - a device profile must be
-  provisioned externally with core-metadata or provided to device-rfid-llrp inside
-  "$SNAP_DATA/config/device-rfid-llrp/res" before starting.
+  provisioned externally with core-metadata or provided to device-rfid-llrp-go inside
+  "$SNAP_DATA/config/device-rfid-llrp-go/res" before starting.
 
 # TODO: add armhf when the project supports this
 architectures:
@@ -26,21 +26,21 @@ slots:
     interface: content
     content: edgex-secretstore-token
     source:
-      write: [$SNAP_DATA/device-rfid-llrp]
+      write: [$SNAP_DATA/device-rfid-llrp-go]
 
 apps:
-  device-rfid-llrp:
+  device-rfid-llrp-go:
     adapter: full
-    command: bin/device-rfid-llrp $CONFIG_PRO_ARG $CONF_ARG $REGISTRY_ARG
+    command: bin/device-rfid-llrp-go $CONFIG_PRO_ARG $CONF_ARG $REGISTRY_ARG
     command-chain:
       - bin/startup-env-var.sh
     environment:
       CONFIG_PRO_ARG: "--cp=consul.http://localhost:8500"
-      CONF_ARG: "--confdir=$SNAP_DATA/config/device-rfid-llrp/res"
+      CONF_ARG: "--confdir=$SNAP_DATA/config/device-rfid-llrp-go/res"
       REGISTRY_ARG: "--registry"
-      DEVICE_PROFILESDIR: "$SNAP_DATA/config/device-rfid-llrp/res/profiles"
-      DEVICE_DEVICESDIR: "$SNAP_DATA/config/device-rfid-llrp/res/devices"
-      SECRETSTORE_TOKENFILE: $SNAP_DATA/device-rfid-llrp/secrets-token.json
+      DEVICE_PROFILESDIR: "$SNAP_DATA/config/device-rfid-llrp-go/res/profiles"
+      DEVICE_DEVICESDIR: "$SNAP_DATA/config/device-rfid-llrp-go/res/devices"
+      SECRETSTORE_TOKENFILE: $SNAP_DATA/device-rfid-llrp-go/secrets-token.json
     daemon: simple
     passthrough:
       install-mode: disable
@@ -50,7 +50,7 @@ plugs:
   device-config:
     interface: content 
     content: device-config
-    target: $SNAP_DATA/config/device-rfid-llrp/res
+    target: $SNAP_DATA/config/device-rfid-llrp-go/res
 
 parts:
   version:
@@ -75,7 +75,7 @@ parts:
       install -DT ./cmd/configure/configure "$SNAPCRAFT_PART_INSTALL/snap/hooks/configure"
       install -DT ./cmd/install/install "$SNAPCRAFT_PART_INSTALL/snap/hooks/install"
 
-  device-rfid-llrp:
+  device-rfid-llrp-go:
     source: .
     plugin: make
     build-packages: [git, libzmq3-dev, pkg-config]
@@ -96,30 +96,23 @@ parts:
       go mod tidy
       make build
 
-      install -DT "./cmd/device-rfid-llrp" "$SNAPCRAFT_PART_INSTALL/bin/device-rfid-llrp"
+      install -DT "./cmd/device-rfid-llrp-go" "$SNAPCRAFT_PART_INSTALL/bin/device-rfid-llrp-go"
 
-      install -d "$SNAPCRAFT_PART_INSTALL/config/device-rfid-llrp/res/"
+      install -d "$SNAPCRAFT_PART_INSTALL/config/device-rfid-llrp-go/res/"
       install -DT "./cmd/res/configuration.toml" \
-        "$SNAPCRAFT_PART_INSTALL/config/device-rfid-llrp/res/configuration.toml"
+        "$SNAPCRAFT_PART_INSTALL/config/device-rfid-llrp-go/res/configuration.toml"
 
-      install -d "$SNAPCRAFT_PART_INSTALL/config/device-rfid-llrp/res/profiles/"
+      install -d "$SNAPCRAFT_PART_INSTALL/config/device-rfid-llrp-go/res/profiles/"
       for fpath in ./cmd/res/profiles/*.yaml; do
           fname=$(basename "$fpath")
           install -DT "./cmd/res/profiles/${fname}" \
-            "$SNAPCRAFT_PART_INSTALL/config/device-rfid-llrp/res/profiles/${fname}"
-      done
-
-      install -d "$SNAPCRAFT_PART_INSTALL/config/device-rfid-llrp/res/devices/"
-      for fpath in ./cmd/res/devices/*.toml; do
-          fname=$(basename "$fpath")
-          install -DT "./cmd/res/devices/${fname}" \
-            "$SNAPCRAFT_PART_INSTALL/config/device-rfid-llrp/res/devices/${fname}"
+            "$SNAPCRAFT_PART_INSTALL/config/device-rfid-llrp-go/res/profiles/${fname}"
       done
 
       install -DT "./Attribution.txt" \
-         "$SNAPCRAFT_PART_INSTALL/usr/share/doc/device-rfid-llrp/Attribution.txt"
+         "$SNAPCRAFT_PART_INSTALL/usr/share/doc/device-rfid-llrp-go/Attribution.txt"
       install -DT "./LICENSE" \
-         "$SNAPCRAFT_PART_INSTALL/usr/share/doc/device-rfid-llrp/LICENSE"
+         "$SNAPCRAFT_PART_INSTALL/usr/share/doc/device-rfid-llrp-go/LICENSE"
 
   config-common:
     plugin: dump

@@ -159,10 +159,10 @@ func TestHandleWrite(t *testing.T) {
 		lc:     elog,
 	}
 
-	roSpecID, err := dsModels.NewCommandValueWithOrigin(ResourceROSpecID, common.ValueTypeString,1, 0)
+	roSpecID, err := dsModels.NewCommandValueWithOrigin(ResourceROSpecID, common.ValueTypeUint32,uint32(1), 0)
 	require.NoError(t,err)
 
-	accessSpecID, err := dsModels.NewCommandValueWithOrigin(ResourceAccessSpecID, common.ValueTypeString, 2, 0)
+	accessSpecID, err := dsModels.NewCommandValueWithOrigin(ResourceAccessSpecID, common.ValueTypeUint32, uint32(2), 0)
 	require.NoError(t,err)
 
 	customData := base64.StdEncoding.EncodeToString([]byte{0, 0, 0, 0})

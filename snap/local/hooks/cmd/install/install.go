@@ -32,7 +32,7 @@ var cli *hooks.CtlCli = hooks.NewSnapCtl()
 func installConfig() error {
 	var err error
 
-	path := "/config/device-llrp-rfid/res/configuration.toml"
+	path := "/config/device-rfid-llrp/res/configuration.toml"
 	destFile := hooks.SnapData + path
 	srcFile := hooks.Snap + path
 
@@ -56,10 +56,10 @@ func installDevices() error {
 func installDevProfiles() error {
 	var err error
 
-	profs := [...]string{"device", "impinj", ""}
+	profs := [...]string{"device", "impinj"}
 
 	for _, v := range profs {
-		path := fmt.Sprintf("/config/device-llrp-rfid/res/profiles/llrp.%s.profile.yaml", v)
+		path := fmt.Sprintf("/config/device-rfid-llrp/res/profiles/llrp.%s.profile.yaml", v)
 		destFile := hooks.SnapData + path
 		srcFile := hooks.Snap + path
 
@@ -78,27 +78,27 @@ func installDevProfiles() error {
 func main() {
 	var err error
 
-	if err = hooks.Init(false, "edgex-device-llrp-rfid"); err != nil {
-		fmt.Println(fmt.Sprintf("edgex-device-llrp-rfid::install: initialization failure: %v", err))
+	if err = hooks.Init(false, "edgex-device-rfid-llrp"); err != nil {
+		fmt.Println(fmt.Sprintf("edgex-device-rfid-llrp::install: initialization failure: %v", err))
 		os.Exit(1)
 
 	}
 
 	err = installConfig()
 	if err != nil {
-		hooks.Error(fmt.Sprintf("edgex-device-llrp-rfid:install: %v", err))
+		hooks.Error(fmt.Sprintf("edgex-device-rfid-llrp:install: %v", err))
 		os.Exit(1)
 	}
 
 	err = installDevices()
 	if err != nil {
-		hooks.Error(fmt.Sprintf("edgex-device-llrp-rfid:install: %v", err))
+		hooks.Error(fmt.Sprintf("edgex-device-rfid-llrp:install: %v", err))
 		os.Exit(1)
 	}
 
 	err = installDevProfiles()
 	if err != nil {
-		hooks.Error(fmt.Sprintf("edgex-device-llrp-rfid:install: %v", err))
+		hooks.Error(fmt.Sprintf("edgex-device-rfid-llrp:install: %v", err))
 		os.Exit(1)
 	}
 }

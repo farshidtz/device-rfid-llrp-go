@@ -47,8 +47,8 @@ func (s *MockSDKService) Devices() []models.Device {
 func (s *MockSDKService) AddDiscoveredDevices(discovered []dsModels.DiscoveredDevice) {
 	for _, d := range discovered {
 		_, _ = s.AddDevice(models.Device{
-			Name:      d.Name,
-			Protocols: d.Protocols,
+			Name:        d.Name,
+			Protocols:   d.Protocols,
 			ProfileName: "LLRP.Device.Profile",
 		})
 	}
@@ -104,6 +104,6 @@ func (s *MockSDKService) LoadCustomConfig(customConfig service.UpdatableConfig, 
 	return nil
 }
 
-func (s *MockSDKService) ListenForCustomConfigChanges(configToWatch interface{},sectionName string, changedCallback func(interface{})) error{
+func (s *MockSDKService) ListenForCustomConfigChanges(configToWatch interface{}, sectionName string, changedCallback func(interface{})) error {
 	return nil
 }

@@ -48,7 +48,7 @@ func installConfig() error {
 }
 
 func installDevices() error {
- 	//No device files
+	//No device files
 
 	return nil
 }

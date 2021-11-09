@@ -22,8 +22,8 @@ type ServiceWrapper interface {
 	GetProvisionWatcherByName(name string) (contract.ProvisionWatcher, error)
 	AddProvisionWatcher(watcher contract.ProvisionWatcher) (id string, err error)
 	AddDevice(device contract.Device) (id string, err error)
-	LoadCustomConfig(customConfig service.UpdatableConfig, sectionName string) error 
-	ListenForCustomConfigChanges(configToWatch interface{},sectionName string, changedCallback func(interface{})) error
+	LoadCustomConfig(customConfig service.UpdatableConfig, sectionName string) error
+	ListenForCustomConfigChanges(configToWatch interface{}, sectionName string, changedCallback func(interface{})) error
 
 	// Pass-through
 	DriverConfigs() map[string]string
@@ -53,4 +53,3 @@ func (s *DeviceSDKService) SetDeviceOpState(name string, state contract.Operatin
 	d.OperatingState = state
 	return s.UpdateDevice(d)
 }
-

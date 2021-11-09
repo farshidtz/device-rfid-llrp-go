@@ -64,7 +64,7 @@ func TestHandleRead(t *testing.T) {
 	go rfid.ImpersonateReader()
 	c := rfid.ConnectClient(t)
 
-	elog:= getLogger()
+	elog := getLogger()
 
 	d := &Driver{
 		lc:            elog,
@@ -131,7 +131,7 @@ func TestHandleRead(t *testing.T) {
 
 func TestHandleWrite(t *testing.T) {
 	rfid, err := llrp.NewTestDevice(llrp.Version1_0_1, llrp.Version1_1, time.Second*1, !testing.Verbose())
-	require.NoError(t,err)
+	require.NoError(t, err)
 
 	rfid.SetResponse(llrp.MsgSetReaderConfig, &llrp.SetReaderConfigResponse{})
 	rfid.SetResponse(llrp.MsgStartROSpec, &llrp.StartROSpecResponse{})
@@ -159,26 +159,26 @@ func TestHandleWrite(t *testing.T) {
 		lc:     elog,
 	}
 
-	roSpecID, err := dsModels.NewCommandValueWithOrigin(ResourceROSpecID, common.ValueTypeUint32,uint32(1), 0)
-	require.NoError(t,err)
+	roSpecID, err := dsModels.NewCommandValueWithOrigin(ResourceROSpecID, common.ValueTypeUint32, uint32(1), 0)
+	require.NoError(t, err)
 
 	accessSpecID, err := dsModels.NewCommandValueWithOrigin(ResourceAccessSpecID, common.ValueTypeUint32, uint32(2), 0)
-	require.NoError(t,err)
+	require.NoError(t, err)
 
 	customData := base64.StdEncoding.EncodeToString([]byte{0, 0, 0, 0})
 	t.Logf("%s", customData)
 
-	readerConfigCmdValue, err := dsModels.NewCommandValueWithOrigin(ResourceReaderConfig,common.ValueTypeString,"{}",0)
-	require.NoError(t,err)
+	readerConfigCmdValue, err := dsModels.NewCommandValueWithOrigin(ResourceReaderConfig, common.ValueTypeString, "{}", 0)
+	require.NoError(t, err)
 
-	roSpecCmdValue, err := dsModels.NewCommandValueWithOrigin(ResourceAction,common.ValueTypeString, ActionStart, 0)
-	require.NoError(t,err)
+	roSpecCmdValue, err := dsModels.NewCommandValueWithOrigin(ResourceAction, common.ValueTypeString, ActionStart, 0)
+	require.NoError(t, err)
 
-	accessSpecCmdValue, err := dsModels.NewCommandValueWithOrigin(ResourceAction,common.ValueTypeString, ActionEnable, 0)
-	require.NoError(t,err)
+	accessSpecCmdValue, err := dsModels.NewCommandValueWithOrigin(ResourceAction, common.ValueTypeString, ActionEnable, 0)
+	require.NoError(t, err)
 
-	customMessageCmdValue, err := dsModels.NewCommandValueWithOrigin("MyCustomMessage",common.ValueTypeString, customData, 0)
-	require.NoError(t,err)
+	customMessageCmdValue, err := dsModels.NewCommandValueWithOrigin("MyCustomMessage", common.ValueTypeString, customData, 0)
+	require.NoError(t, err)
 
 	for _, testCase := range []struct {
 		name    string
@@ -245,15 +245,15 @@ func TestHandleWrite(t *testing.T) {
 				testCase.reqs, testCase.param,
 			)
 
-			require.NoError(t,err)
+			require.NoError(t, err)
 		})
 	}
 }
 
-func getLogger() logger.LoggingClient{
-	if testing.Verbose(){
+func getLogger() logger.LoggingClient {
+	if testing.Verbose() {
 		return logger.NewClient("unitTest", "DEBUG")
-	}else{
+	} else {
 		return logger.MockLogger{}
 	}
 }

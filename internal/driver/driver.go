@@ -29,7 +29,7 @@ import (
 )
 
 const (
-	ServiceName    = "device-rfid-llrp"
+	ServiceName = "device-rfid-llrp"
 
 	ResourceReaderCap          = "ReaderCapabilities"
 	ResourceReaderConfig       = "ReaderConfig"
@@ -156,7 +156,7 @@ func (d *Driver) Initialize(lc logger.LoggingClient, asyncCh chan<- *dsModels.As
 	lc.Debugf("Custom config is : %v", d.config)
 
 	err = d.svc.ListenForCustomConfigChanges(&d.config.AppCustom, "AppCustom", d.updateWritableConfig)
-	if err != nil{
+	if err != nil {
 		return errors.Wrap(err, "failed to listen to custom config changes")
 	}
 
@@ -716,12 +716,12 @@ func (d *Driver) addProvisionWatchers() error {
 		return err
 	}
 
-	d.lc.Debugf("%d provision watcher files found",len(files))
+	d.lc.Debugf("%d provision watcher files found", len(files))
 
 	var errs []error
 	for _, file := range files {
 		filename := filepath.Join(provisionWatcherFolder, file.Name())
-		d.lc.Debugf("processing %s",filename)
+		d.lc.Debugf("processing %s", filename)
 		var watcher dtos.ProvisionWatcher
 		data, err := ioutil.ReadFile(filename)
 		if err != nil {

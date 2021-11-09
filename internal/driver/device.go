@@ -389,7 +389,7 @@ func (l *LLRPDevice) sendEdgeXEvent(eventName string, ns int64, event interface{
 			"event", fmt.Sprintf("%+v", event))
 		return
 	}
-	newCmd,err := dsModels.NewCommandValueWithOrigin(eventName,common.ValueTypeString,string(data),ns)
+	newCmd, err := dsModels.NewCommandValueWithOrigin(eventName, common.ValueTypeString, string(data), ns)
 	if err != nil {
 		l.lc.Errorf("Failed to create new command value with origin: %s", err.Error())
 		return

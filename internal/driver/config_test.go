@@ -8,48 +8,47 @@ package driver
 import (
 	"testing"
 
-	"github.com/go-playground/assert/v2"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestUpdateFromRaw(t *testing.T) {
-	expectedConfig:= &ServiceConfig{
+	expectedConfig := &ServiceConfig{
 		AppCustom: CustomConfig{
-			DiscoverySubnets: "0.134.00.1",
-			ProbeAsyncLimit:  50,
-			ProbeTimeoutSeconds:  1,
-			ScanPort:  "666",
+			DiscoverySubnets:           "0.134.00.1",
+			ProbeAsyncLimit:            50,
+			ProbeTimeoutSeconds:        1,
+			ScanPort:                   "666",
 			MaxDiscoverDurationSeconds: 5,
 		},
 	}
-	testCases :=  []struct{
-		Name string
+	testCases := []struct {
+		Name      string
 		rawConfig interface{}
-		isValid bool
+		isValid   bool
 	}{
 		{
-			Name: "valid",
-			isValid: true,
+			Name:      "valid",
+			isValid:   true,
 			rawConfig: expectedConfig,
-
 		},
 		{
-			Name: "not valid",
-			isValid: false,
+			Name:      "not valid",
+			isValid:   false,
 			rawConfig: expectedConfig.AppCustom,
 		},
 	}
 
-	for _,testCase := range testCases{
-		t.Run(testCase.Name,func(t *testing.T) {
+	for _, testCase := range testCases {
+		t.Run(testCase.Name, func(t *testing.T) {
 			actualConfig := ServiceConfig{}
 
 			ok := actualConfig.UpdateFromRaw(testCase.rawConfig)
-			
-			assert.Equal(t,testCase.isValid,ok)
+
+			assert.Equal(t, testCase.isValid, ok)
 			if testCase.isValid {
-				assert.Equal(t,expectedConfig,actualConfig)
+				assert.Equal(t, expectedConfig, &actualConfig)
 			}
 		})
-	} 
-	
+	}
+
 }

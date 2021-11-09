@@ -12,10 +12,10 @@ https://github.com/edsrzf/mmap-go/blob/master/LICENSE
 edgexfoundry/go-mod-core-contracts/v2 (Apache 2.0) https://github.com/edgexfoundry/go-mod-core-contracts/v2
 https://github.com/edgexfoundry/go-mod-core-contracts/v2/blob/master/LICENSE
 
-edgexfoundry/go-mod-registry (Apache 2.0) https://github.com/edgexfoundry/go-mod-registry
+edgexfoundry/go-mod-registry/v2 (Apache 2.0) https://github.com/edgexfoundry/go-mod-registry/v2
 https://github.com/edgexfoundry/go-mod-registry/blob/master/LICENSE
 
-edgexfoundry/device-sdk-go (Apache 2.0) https://github.com/edgexfoundry/device-sdk-go/v2
+edgexfoundry/device-sdk-go/v2 (Apache 2.0) https://github.com/edgexfoundry/device-sdk-go/v2
 https://github.com/edgexfoundry/device-sdk-go/v2/blob/master/LICENSE
 
 gorilla/mux 1.6.2 (BSD-3) https://github.com/gorilla/mux
@@ -126,7 +126,7 @@ https://github.com/hashicorp/consul/blob/master/LICENSE
 edgexfoundry/go-mod-bootstrap/v2 (Apache 2.0) https://github.com/edgexfoundry/go-mod-bootstrap/v2
 https://github.com/edgexfoundry/go-mod-bootstrap/v2/blob/master/LICENSE
 
-edgexfoundry/go-mod-secrets (Apache 2.0) https://github.com/edgexfoundry/go-mod-secrets
+edgexfoundry/go-mod-secret/v2 (Apache 2.0) https://github.com/edgexfoundry/go-mod-secrets/v2
 https://github.com/edgexfoundry/go-mod-secrets/blob/master/LICENSE
 
 edgexfoundry/go-mod-configuration/v2 (Apache 2.0) https://github.com/edgexfoundry/go-mod-configuration/v2
@@ -159,3 +159,53 @@ https://github.com/leodido/go-urn/blob/master/LICENSE
 hashicorp/go-multierror (Mozilla Public License 2.0) https://github.com/hashicorp/go-multierror
 https://github.com/hashicorp/go-multierror/blob/master/LICENSE
 
+davecgh/go-spew (ISC) https://github.com/davecgh/go-spew
+https://github.com/davecgh/go-spew/blob/master/LICENSE
+
+eclipse/paho.mqtt.golang (Eclipse Distribution License) https://github.com/eclipse/paho.mqtt.golang
+https://github.com/eclipse/paho.mqtt.golang/blob/master/LICENSE
+
+edgexfoundry/go-mod-messaging/v2 (Apache 2.0) https://github.com/edgexfoundry/go-mod-messaging/v2
+https://github.com/edgexfoundry/go-mod-messaging/blob/master/LICENSE
+
+github.com/fatih/color (MIT) https://github.com/fatih/color
+https://github.com/fatih/color/blob/master/LICENSE.md
+
+go-redis/redis (BSD-2) https://github.com/go-redis/redis/v7
+https://github.com/go-redis/redis/blob/master/LICENSE
+
+gorilla/websocket (BSD-2) https://github.com/gorilla/websocket
+https://github.com/gorilla/websocket/blob/master/LICENSE
+
+hashicorp/errwrap (Mozilla Public License 2.0) https://github.com/hashicorp/errwrap
+https://github.com/hashicorp/errwrap/blob/master/LICENSE
+
+github.com/hashicorp/go-hclog (MIT) https://github.com/hashicorp/go-hclog
+https://github.com/hashicorp/go-hclog/blob/master/LICENSE
+
+github.com/mattn/go-colorable (MIT) https://github.com/mattn/go-colorable
+https://github.com/mattn/go-colorable/blob/master/LICENSE
+
+github.com/mattn/go-isatty (MIT) https://github.com/mattn/go-isatty
+https://github.com/mattn/go-isatty/blob/master/LICENSE
+
+pebbe/zmq4 (BSD-2) https://github.com/pebbe/zmq4
+https://github.com/pebbe/zmq4/blob/master/LICENSE.txt
+
+pmezard/go-difflib (Unspecified) https://github.com/pmezard/go-difflib
+https://github.com/pmezard/go-difflib/blob/master/LICENSE
+
+stretchr/testify (MIT) https://github.com/stretchr/testify
+https://github.com/stretchr/testify/blob/master/LICENSE
+
+golang.org/x/crypto (Unspecified) https://github.com/golang/crypto
+https://github.com/golang/crypto/blob/master/LICENSE
+
+golang.org/x/net (Unspecified) https://github.com/golang/net
+https://github.com/golang/net/blob/master/LICENSE
+
+golang.org/x/text (Unspecified) https://github.com/golang/text
+https://github.com/golang/text/blob/master/LICENSE
+
+gopkg.in/yaml.v3 (MIT) https://github.com/go-yaml/yaml/
+https://github.com/go-yaml/yaml/blob/v3/LICENSE

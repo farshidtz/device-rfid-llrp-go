@@ -26,6 +26,7 @@ type CustomConfig struct {
 	MaxDiscoverDurationSeconds int
 }
 
+//ServiceConfig a struct that wraps CustomConfig which holds the values for driver configuration
 type ServiceConfig struct {
 	AppCustom CustomConfig
 }
